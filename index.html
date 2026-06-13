@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Beauty</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" id="hljs-theme" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body data-theme="midnight" data-dark="true">
+
+    <header>
+        <div class="logo">Code Beauty</div>
+        <div class="header-actions">
+            <button id="paste-btn" title="Read code from clipboard">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                Paste from Clipboard
+            </button>
+            <button id="copy-btn" title="Copy image to clipboard">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy Image
+            </button>
+            <button id="export-btn" title="Export as PNG image">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export Image
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-scroll">
+        <div id="export-wrapper">
+            <div id="code-card">
+                <div class="titlebar">
+                    <div class="dots">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                    <span class="window-title" contenteditable="true" spellcheck="false">Untitled-1</span>
+                </div>
+                <div class="code-body">
+                    <div id="line-numbers"></div>
+                    <div class="code-area">
+                        <pre><code id="code-display"></code></pre>
+                        <textarea id="code-input" spellcheck="false"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <footer id="controls">
+        <div class="control-group">
+            <label>Theme</label>
+            <select id="theme-select">
+                <option value="midnight">Midnight</option>
+                <option value="breeze">Breeze</option>
+                <option value="candy">Candy</option>
+                <option value="crimson">Crimson</option>
+                <option value="sunset">Sunset</option>
+                <option value="mono">Mono</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label>Background</label>
+            <button id="bg-toggle" class="toggle active" aria-pressed="true">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            </button>
+        </div>
+
+        <div class="control-group">
+            <label>Dark Mode</label>
+            <button id="dark-toggle" class="toggle active" aria-pressed="true">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            </button>
+        </div>
+
+        <div class="control-group">
+            <label>Line Numbers</label>
+            <button id="lines-toggle" class="toggle active" aria-pressed="true">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            </button>
+        </div>
+
+        <div class="control-group">
+            <label>Padding</label>
+            <div class="padding-options">
+                <button data-padding="16">16</button>
+                <button data-padding="32" class="active">32</button>
+                <button data-padding="64">64</button>
+                <button data-padding="128">128</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>Language</label>
+            <select id="language-select">
+                <option value="auto">Auto Detect</option>
+                <option value="javascript">JavaScript</option>
+                <option value="typescript">TypeScript</option>
+                <option value="python">Python</option>
+                <option value="sql">SQL</option>
+                <option value="bash">Bash</option>
+                <option value="json">JSON</option>
+                <option value="xml">HTML / XML</option>
+                <option value="css">CSS</option>
+                <option value="java">Java</option>
+                <option value="go">Go</option>
+                <option value="rust">Rust</option>
+                <option value="c">C</option>
+                <option value="cpp">C++</option>
+                <option value="ruby">Ruby</option>
+                <option value="php">PHP</option>
+                <option value="swift">Swift</option>
+                <option value="kotlin">Kotlin</option>
+                <option value="yaml">YAML</option>
+                <option value="markdown">Markdown</option>
+                <option value="plaintext">Plain Text</option>
+            </select>
+        </div>
+
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
